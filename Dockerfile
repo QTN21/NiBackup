@@ -2,8 +2,7 @@
 FROM python:3.9-slim
 
 # Set the environment variable for the password
-ENV PASS=my_secret_password
-
+ENV PASS=pass
 # Set the environment variable
 ENV PYTHONUNBUFFERED=1
 
@@ -20,4 +19,4 @@ RUN git clone https://github.com/QTN21/NIBackup.git .
 RUN pip3 install -r ./requirements.txt
 
 # Run the command when the container starts
-CMD ["python3", "script.py", "${PASS}"]
+CMD python3 script.py "$PASS"

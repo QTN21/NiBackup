@@ -31,7 +31,6 @@ def main(password):
     DB_FILE = "./files/nas-database.db"
     CSV_FILE = "./files/backup.csv"
     data = dict()
-    print(password)
 
     try:
         # Récupération des données de la DB
