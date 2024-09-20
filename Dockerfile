@@ -2,25 +2,22 @@
 FROM python:3.9-slim
 
 # Set the environment variable for the password
-ENV PASSWORD=my_secret_password
+ENV PASS=my_secret_password
 
 # Set the environment variable
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
 
 # Set the working directory to /app
 WORKDIR /app
 
 # Install 
-RUN apt-get update && apt-get install libsqlcipher-dev
+RUN apt update && apt install -y libsqlcipher-dev git python3-pip
 
 # Download the repository from GitHub
-RUN git clone https://github.com/NIP_Backup .
+RUN git clone https://github.com/QTN21/NIBackup.git .
 
 # Install the dependencies
-RUN pip install --no-cache-dir -r ./NIP_Backup/requirements.txt
+RUN pip3 install -r ./requirements.txt
 
 # Run the command when the container starts
-CMD ["python3", "script.py", "${PASSWORD}"]
-
-# Share the backup.csv file between the Docker container and the system
-VOLUME ./backup.csv:/app/NIP_Backup/files/backup.csv
+CMD ["python3", "script.py", "${PASS}"]

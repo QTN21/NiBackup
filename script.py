@@ -29,13 +29,12 @@ def csv_create(dico, DST_FILE):
 
 def main(password):
     DB_FILE = "./files/nas-database.db"
-    DB_PASS = password
     CSV_FILE = "./files/backup.csv"
     data = dict()
 
     try:
         # Récupération des données de la DB
-        db_data = db_select(DB_FILE, DB_PASS)
+        db_data = db_select(DB_FILE, password)
 
         for value in db_data.values():
             try:
